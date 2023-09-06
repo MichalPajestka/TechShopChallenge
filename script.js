@@ -3,8 +3,8 @@ document.getElementById("accountBalance").innerHTML = new Intl.NumberFormat('no-
 
 function getALoan() {
     let outstandingLoan = "";
-    let  loan = prompt("Enter amount: ");
-    if(loan == null || loan == "" || loan > totalBalance * 2) {
+    let loan = parseFloat(prompt("Enter amount:"));
+    if(isNaN(loan) || loan <= 0 || loan > totalBalance * 2) {
         alert("Invalid amount");
     } else {
         outstandingLoan = "Your loan: " + loan;
