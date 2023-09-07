@@ -21,7 +21,7 @@
             <div id="loan-container">
                 <span id="outstanding-loan"></span>
                 <br>
-                <button class="btn btn-success" onclick="getALoan()">Get a loan</button>
+                <button type="button" class="btn btn-success" onclick="getALoan()">Get a loan</button>
             </div>
         </div>
         <br>
@@ -29,9 +29,10 @@
             <span id="work-heading">Work</span>
             <div id="work-container">
                 <span>Pay: </span>
-                <span id="current-pay"></span>
+                <span id="salary-balance"></span>
                 <br>
-                <button class="btn btn-submit">Bank</button>
+                <button type="button" class="btn btn-warning" onclick="transferToBank()">Bank</button>
+                <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 let totalBalance = 200;
 let outstandingLoan = 0;
-let currentPay = 0;
-document.getElementById("current-pay").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK'}).format(currentPay);
+let salaryBalance = 0;
+document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK'}).format(salaryBalance);
 document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
 
 function getALoan() {
@@ -17,7 +17,16 @@ function getALoan() {
         
          // Update the total balance and display
          totalBalance += loan;
-         document.getElementById("accountBalance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
+         document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
     }
-    
+}
+
+function tranfserToBank() {
+      
+}
+
+function increaseSalary() {
+    let salary = 100;
+    salaryBalance += salary;
+    document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(salaryBalance);
 }
