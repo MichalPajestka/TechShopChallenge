@@ -169,6 +169,29 @@ function displayLaptopInfo(selectedLaptopId) {
     // Display laptop name, description, and price
     nameContainer.textContent = selectedLaptop.title;
     descriptionContainer.textContent = selectedLaptop.description;
-    priceContainer.textContent = "Price: kr " + selectedLaptop.price.toFixed(2);
+    priceContainer.textContent = selectedLaptop.price + " NOK";
   }
 }
+
+function buyLaptop() {
+  // Get the selected laptop ID from the dropdown menu
+  const selectedLaptopId = parseInt(document.getElementById("laptop-select").value);
+  
+  // Find the selected laptop object in the JSON data
+  const selectedLaptop = laptops.find(laptop => laptop.id === selectedLaptopId);
+
+  if (selectedLaptop) {
+    const laptopPrice = selectedLaptop.price;
+
+    if (laptopPrice <= totalBalance) {
+      totalBalance -= laptopPrice;
+      document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(totalBalance);
+      alert("Laptop purchased successfully!");
+    } else {
+      alert("Not enough funds to buy the laptop");
+    }
+  } else {
+    alert("Selected laptop not found.");
+  }
+}
+
