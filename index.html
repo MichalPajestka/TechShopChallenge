@@ -13,7 +13,7 @@
             <h1>Techshop</h1>
         </nav>
         <div id="balance">
-            <span id="bank-customer-name">Joe Banker</span>
+            <h3 id="bank-customer-name">Joe Banker</h3>
             <div id="balance-container">
                 <span>Balance:</span>
                 <span id="account-balance"></span>
@@ -26,14 +26,29 @@
         </div>
         <br>
         <div id="work">
-            <span id="work-heading">Work</span>
+            <h3 id="work-heading">Work</h3>
             <div id="work-container">
                 <span>Salary: </span>
                 <span id="salary-balance"></span>
                 <br>
                 <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
                 <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
+
+                <!-- TODO: Hide button via DOM manipulation -->
                 <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
+            </div>
+        </div>
+        <br>
+        <div id="laptops">
+            <h3 id="laptops-heading">Laptops</h3>
+            <div id="laptops-container">
+                <select id="laptop-select">
+                    <!-- Options will be added here dynamically -->
+                  </select>
+                  
+                  <div id="specs-container">
+                    <!-- Laptop specs will be displayed here -->
+                  </div>
             </div>
         </div>
     </div>
