@@ -6,65 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tech Shop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css"></link>
 </head>
 <body>
-    <div class="container">
-        <nav id="navbar">
-            <h1>Techshop</h1>
-        </nav>
-        <div id="balance-container">
-            <h3 id="bank-customer-name">Joe Banker</h3>
-            <span>Balance:</span>
-            <span id="account-balance"></span>
-            <div id="loan-container">
-                <span id="outstanding-loan"></span>
-                <br>
-            <button type="button" class="btn btn-success" onclick="getALoan()">Get a loan</button>
-            </div>
+  <div class="container">
+  <div class="row">
+    <nav id="navbar">
+      <h1>Techshop</h1>
+    </nav>
+  </div>
+  <div class="row my-3">
+    <div class="col-md-4 balance-container1">
+      <div id="balance-container">
+        <h3 id="bank-customer-name">Joe Banker</h3>
+        <span>Balance:</span>
+        <span id="account-balance"></span>
+        <div id="loan-container">
+          <span id="outstanding-loan"></span>
+          <br>
+          <button type="button" class="btn btn-success" onclick="getALoan()">Get a loan</button>
         </div>
-        <br>
-        <div id="work-container">
-            <h3 id="work-heading">Work</h3>
-            <span>Salary: </span>
-            <span id="salary-balance"></span>
-            <br>
-            <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
-            <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
-
-            <!-- TODO: Hide button via DOM manipulation -->
-            <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
-        <br>
-        <div id="laptops-selection-container">
-            <h3 id="laptops-heading">Laptops</h3>
-            <select id="laptop-select">
-            <!-- Options will be added here dynamically -->
-            </select>
-            <div id="specs-container">
-            <!-- Laptop specs will be displayed here -->
-            </div>
-        </div>
-        <br>
-        <div id="laptop-info-container">
-            <div id="laptop-image">
-              <!-- Laptop image will be displayed here -->
-            </div>
-          
-            <h3 id="laptop-title">
-              <!-- Laptop name will be displayed here -->
-            </h3>
-          
-            <p id="laptop-description">
-              <!-- Laptop description will be displayed here -->
-            </p>
-          
-            <div id="laptop-price">
-              <!-- Laptop price will be displayed here -->
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary" onclick="buyLaptop()">BUY NOW</button>
-
+      </div>
     </div>
-    <script src="script.js"></script>
-</body>
+    <div class="col-md-4">
+      <div id="work-container">
+        <h3 id="work-heading">Work</h3>
+        <span>Salary: </span>
+        <span id="salary-balance"></span>
+        <br>
+        <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
+        <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
 
+        <!-- TODO: Hide button via DOM manipulation -->
+        <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="laptops-selection-container">
+        <h3 id="laptops-heading">Laptops</h3>
+        <select id="laptop-select">
+        </select>
+        <div id="specs-container">
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-md-12">
+      <!-- Wrap the contents in a single container -->
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="col-md-4">
+          <div id="laptop-image"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="laptop-info-container">
+            <h3 id="laptop-title"></h3>
+            <p id="laptop-description"></p>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div id="laptop-price"></div>
+          <button type="button" class="btn btn-primary" onclick="buyLaptop()">BUY NOW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<script src="script.js"></script>
+</body>
 </html>

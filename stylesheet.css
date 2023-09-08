@@ -1,0 +1,21 @@
+.col-md-4, .col-md-6, .col-md-2 {
+    height: 320px; /* Adjust the height as needed */
+    overflow: hidden; /* Hide any overflowing content */
+}
+
+#specs-container p {
+    margin-bottom: 5px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.balance-container1 {
+    background-color: lightgrey;
+}

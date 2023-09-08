@@ -161,8 +161,6 @@ function displayLaptopInfo(selectedLaptopId) {
     const imageUrl = "https://hickory-quilled-actress.glitch.me/" + selectedLaptop.image;
     const laptopImage = document.createElement("img");
     laptopImage.src = imageUrl;
-    laptopImage.style.width = "300px";
-    laptopImage.style.height = "300px";
     imageContainer.innerHTML = "";
     imageContainer.appendChild(laptopImage);
 
