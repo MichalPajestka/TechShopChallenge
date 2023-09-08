@@ -90,6 +90,18 @@ function repayLoan() {
     }
 }
 
+  // Fetch the laptops.json file and parse the data
+  fetch('https://hickory-quilled-actress.glitch.me/computers')
+    .then(response => response.json())
+    .then(data => {
+      laptops = data; 
+      populateLaptopTitles(); // Populate the select element
+    })
+    .catch(error => {
+      console.error("Error reading JSON file:", error);
+    });
+  
+
 // Function to fetch and display laptop specs
 function displayLaptopSpecs(selectedLaptopId) {
     // Find the selected laptop object in the JSON data
@@ -111,34 +123,52 @@ function displayLaptopSpecs(selectedLaptopId) {
   }
   
   // Function to populate the select element with laptop titles
-  function populateLaptopTitles() {
-    const select = document.getElementById("laptop-select");
-  
-    laptops.forEach(laptop => {
-      const option = document.createElement("option");
-      option.value = laptop.id;
-      option.textContent = laptop.title;
-      select.appendChild(option);
-    });
-  
-    select.addEventListener("change", function () {
-      const selectedLaptopId = parseInt(select.value);
-      displayLaptopSpecs(selectedLaptopId);
-    });
+function populateLaptopTitles() {
+  const select = document.getElementById("laptop-select");
 
-    // Display specs of the first laptop by default
-    const firstLaptopId = laptops[0].id;
-    displayLaptopSpecs(firstLaptopId);
+  laptops.forEach(laptop => {
+    const option = document.createElement("option");
+    option.value = laptop.id;
+    option.textContent = laptop.title;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", function () {
+    const selectedLaptopId = parseInt(select.value);
+    displayLaptopSpecs(selectedLaptopId);
+    displayLaptopInfo(selectedLaptopId); // Call the function to display laptop info
+  });
+
+  // Display specs of the first laptop by default
+  const firstLaptopId = laptops[0].id;
+  displayLaptopSpecs(firstLaptopId);
+  displayLaptopInfo(firstLaptopId); // Display laptop info for the first laptop
+}
+  
+// Function to display laptop information (image, name, description, price)
+function displayLaptopInfo(selectedLaptopId) {
+  // Find the selected laptop object in the JSON data
+  const selectedLaptop = laptops.find(laptop => laptop.id === selectedLaptopId);
+
+  if (selectedLaptop) {
+    // Display laptop image, name, description, and price
+    const imageContainer = document.getElementById("laptop-image");
+    const nameContainer = document.getElementById("laptop-title");
+    const descriptionContainer = document.getElementById("laptop-description");
+    const priceContainer = document.getElementById("laptop-price");
+
+    // Set the laptop image source
+    const imageUrl = "https://hickory-quilled-actress.glitch.me/" + selectedLaptop.image;
+    const laptopImage = document.createElement("img");
+    laptopImage.src = imageUrl;
+    laptopImage.style.width = "300px";
+    laptopImage.style.height = "300px";
+    imageContainer.innerHTML = "";
+    imageContainer.appendChild(laptopImage);
+
+    // Display laptop name, description, and price
+    nameContainer.textContent = selectedLaptop.title;
+    descriptionContainer.textContent = selectedLaptop.description;
+    priceContainer.textContent = "Price: kr " + selectedLaptop.price.toFixed(2);
   }
-  
-  // Fetch the laptops.json file and parse the data
-  fetch('https://hickory-quilled-actress.glitch.me/computers')
-    .then(response => response.json())
-    .then(data => {
-      laptops = data; 
-      populateLaptopTitles(); // Populate the select element
-    })
-    .catch(error => {
-      console.error("Error reading JSON file:", error);
-    });
-  
+}

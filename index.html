@@ -12,46 +12,58 @@
         <nav id="navbar">
             <h1>Techshop</h1>
         </nav>
-        <div id="balance">
+        <div id="balance-container">
             <h3 id="bank-customer-name">Joe Banker</h3>
-            <div id="balance-container">
-                <span>Balance:</span>
-                <span id="account-balance"></span>
-            </div>
+            <span>Balance:</span>
+            <span id="account-balance"></span>
             <div id="loan-container">
                 <span id="outstanding-loan"></span>
                 <br>
-                <button type="button" class="btn btn-success" onclick="getALoan()">Get a loan</button>
+            <button type="button" class="btn btn-success" onclick="getALoan()">Get a loan</button>
             </div>
         </div>
         <br>
-        <div id="work">
+        <div id="work-container">
             <h3 id="work-heading">Work</h3>
-            <div id="work-container">
-                <span>Salary: </span>
-                <span id="salary-balance"></span>
-                <br>
-                <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
-                <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
+            <span>Salary: </span>
+            <span id="salary-balance"></span>
+            <br>
+            <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
+            <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
 
-                <!-- TODO: Hide button via DOM manipulation -->
-                <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
+            <!-- TODO: Hide button via DOM manipulation -->
+            <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
+        <br>
+        <div id="laptops-selection-container">
+            <h3 id="laptops-heading">Laptops</h3>
+            <select id="laptop-select">
+            <!-- Options will be added here dynamically -->
+            </select>
+            <div id="specs-container">
+            <!-- Laptop specs will be displayed here -->
             </div>
         </div>
         <br>
-        <div id="laptops">
-            <h3 id="laptops-heading">Laptops</h3>
-            <div id="laptops-container">
-                <select id="laptop-select">
-                    <!-- Options will be added here dynamically -->
-                  </select>
-                  
-                  <div id="specs-container">
-                    <!-- Laptop specs will be displayed here -->
-                  </div>
+        <div id="laptop-info-container">
+            <div id="laptop-image">
+              <!-- Laptop image will be displayed here -->
             </div>
-        </div>
+          
+            <h3 id="laptop-title">
+              <!-- Laptop name will be displayed here -->
+            </h3>
+          
+            <p id="laptop-description">
+              <!-- Laptop description will be displayed here -->
+            </p>
+          
+            <div id="laptop-price">
+              <!-- Laptop price will be displayed here -->
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="buyLaptop()">BUY NOW</button>
     </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 </html>
