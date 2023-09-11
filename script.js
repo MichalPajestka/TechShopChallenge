@@ -16,7 +16,7 @@ function getALoan() {
     } else {
         // Update the outstanding loan
         outstandingLoan = loan;
-        document.getElementById("outstanding-loan").innerHTML = "Your outstanding loan: " + new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+        document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(outstandingLoan);
         
         // Update the total balance and display
         totalBalance += loan;
@@ -24,6 +24,9 @@ function getALoan() {
         
         // Show the "Repay Loan" button
         document.getElementById("repay-loan-button").style.display = "inline-block";
+        
+        // Show the "Your outstanding loan:" label
+        document.getElementById("outstanding-loan-row").style.display = "flex";
     }
 }
 
@@ -42,14 +45,14 @@ function transferToBank() {
 
         if (outstandingLoan < 1) {
             outstandingLoan = 0;
-            document.getElementById("outstanding-loan").innerHTML = "";
+            document.getElementById("outstanding-loan-amount").innerHTML = "";
             // Hide the "Repay Loan" button
             document.getElementById("repay-loan-button").style.display = "none";
         } else {
-            document.getElementById("outstanding-loan").innerHTML = "Your outstanding loan: " + new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+            document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
         }
     } else {
-        document.getElementById("outstanding-loan").innerHTML = "";
+        document.getElementById("outstanding-loan-amount").innerHTML = "";
     }
 
     totalBalance += deductedSalary;
@@ -73,13 +76,13 @@ function repayLoan() {
         salary -= salaryBalance;
         outstandingLoan -= salaryBalance;
 
-        document.getElementById("outstanding-loan").innerHTML = "Your outstanding loan: " + new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+        document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
         
         salaryBalance = 0;
         document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(salaryBalance);
 
         if (outstandingLoan < 1) {
-            document.getElementById("outstanding-loan").innerHTML = "";
+            document.getElementById("outstanding-loan-amount").innerHTML = "";
             document.getElementById("repay-loan-button").style.display = "none";
             
             remaindingFunds = salaryBalance - outstandingLoan;
@@ -91,7 +94,7 @@ function repayLoan() {
 }
 
   // Fetch the laptops.json file and parse the data
-  fetch('https://hickory-quilled-actress.glitch.me/computers')
+  fetch('computers.json')
     .then(response => response.json())
     .then(data => {
       laptops = data; 
@@ -113,7 +116,7 @@ function displayLaptopSpecs(selectedLaptopId) {
   
       // Display the specs in a div or any other element
       const specsContainer = document.getElementById("specs-container");
-      specsContainer.innerHTML = "<h4>Features:</h4>";
+      specsContainer.innerHTML = "";
       laptopSpecs.forEach(spec => {
         const specItem = document.createElement("p");
         specItem.textContent = spec;
