@@ -45,38 +45,29 @@
     justify-content: space-between;
 }
 
-.label {
-    flex: 1;
-    text-align: left;
-    margin-right: 10px;
-    font-weight: bold;
-    color: black; /* Set the label color to black */
-}
-
 .value {
     flex: 2;
     text-align: right;
 }
 
-/* Position the outstanding-loan-label to the left */
 #outstanding-loan-label {
     text-align: left;
 }
 
 #outstanding-loan {
-    margin: 0; /* Reset margin for the outstanding-loan span */
+    margin: 0;
 }
 
 
 .button-container {
     display: flex;
-    flex-direction: row; /* Arrange buttons horizontally */
-    justify-content: space-between; /* Add space between buttons */
+    flex-direction: row;
+    justify-content: space-between;
 }
   
 .button-container .btn {
-    flex: 1; /* Distribute space equally among buttons */
-    margin: 0 5px; /* Add spacing between buttons */
+    flex: 1;
+    margin: 0 5px;
 }
 
 .select-laptop-container h4 {
@@ -90,7 +81,7 @@
 .row.my-3 {
     display: flex;
     align-items: stretch;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .col-md-4 {
@@ -111,41 +102,39 @@ img {
     margin: 2px;
 }
   
-  .laptop-image {
-    width: 200px; /* Adjust image width as needed */
-    height: 200px; /* Adjust image height as needed */
-    margin-right: 20px; /* Add spacing between image and details */
-    /* You can also add a background image here if needed */
-  }
-  
-  .laptop-details {
+.laptop-image {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;/
+}
+
+.laptop-details {
     flex: 1;
     display: flex;
     flex-direction: column;
-  }
-  
-  .laptop-title {
-    font-size: 24px; /* Adjust font size as needed */
+    justify-content: space-between;
+}
+
+.laptop-title {
+    font-size: 24px;
     font-weight: bold;
-  }
-  
-  .laptop-description {
-    margin-top: 10px; /* Add spacing between title and description */
-    font-size: 16px; /* Adjust font size as needed */
-  }
-  
-  .laptop-price-button {
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.laptop-description {
+    font-size: 16px;
+}
+
+.laptop-price{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.laptop-price-button-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-  }
-  
-  .laptop-price {
-    font-size: 18px; /* Adjust font size as needed */
-  }
-  
-  /* Style the "BUY NOW" button */
-  .btn-primary {
-    margin-top: 10px; /* Add spacing between price and button */
-  }
-  
+    justify-content: center;
+    height: 100%;
+}

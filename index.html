@@ -43,7 +43,6 @@
         <div class="button-container">
             <button type="button" class="btn btn-warning" onclick="transferToBank()">Transfer to bank</button>
             <button type="button" class="btn btn-primary" onclick="increaseSalary()">Work</button>
-            <!-- TODO: Hide button via DOM manipulation -->
             <button type="button" class="btn btn-light" onclick="repayLoan()" id="repay-loan-button" style="display: none;">Repay Loan</button>
         </div>
     </div>
@@ -67,15 +66,14 @@
         <div class="laptop-details">
           <div class="laptop-title" id="laptop-title"></div>
           <div class="laptop-description" id="laptop-description"></div>
-          <div class="laptop-price-button">
+          <div class="laptop-price-button-container">
             <div class="laptop-price" id="laptop-price"></div>
             <button type="button" class="btn btn-primary" onclick="buyLaptop()">BUY NOW</button>
           </div>
         </div>
       </div>  
-    </div>    
+    </div>
   </div>
-  
 </div>
 <script src="script.js"></script>
 </body>

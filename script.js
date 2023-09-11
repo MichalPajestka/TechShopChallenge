@@ -46,6 +46,8 @@ function transferToBank() {
         if (outstandingLoan < 1) {
             outstandingLoan = 0;
             document.getElementById("outstanding-loan-amount").innerHTML = "";
+            document.getElementById("outstanding-loan-row").style.display = "none";
+
             // Hide the "Repay Loan" button
             document.getElementById("repay-loan-button").style.display = "none";
         } else {
@@ -83,6 +85,7 @@ function repayLoan() {
 
         if (outstandingLoan < 1) {
             document.getElementById("outstanding-loan-amount").innerHTML = "";
+            document.getElementById("outstanding-loan-row").style.display = "none";
             document.getElementById("repay-loan-button").style.display = "none";
             
             remaindingFunds = salaryBalance - outstandingLoan;
