@@ -8,127 +8,136 @@ document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-
 document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
 
 function getALoan() {
-    let loan = parseFloat(prompt("Enter amount:"));
-    if (outstandingLoan > 0) {
-        alert("You need to repay your previous loan first")
-    } else if (isNaN(loan) || loan <= 0 || loan > totalBalance * 2) {
-        alert("Invalid amount");
-    } else {
-        // Update the outstanding loan
-        outstandingLoan = loan;
-        document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+  let loan = parseFloat(prompt("Enter amount:"));
+  if (outstandingLoan > 0) {
+    alert("You need to repay your previous loan first")
+  } else if (isNaN(loan) || loan <= 0 || loan > totalBalance * 2) {
+    alert("Invalid amount");
+  } else {
+    // Update the outstanding loan
+    outstandingLoan = loan;
+    document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(outstandingLoan);
         
-        // Update the total balance and display
-        totalBalance += loan;
-        document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
+    // Update the total balance and display
+    totalBalance += loan;
+    document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(totalBalance);
         
-        // Show the "Repay Loan" button
-        document.getElementById("repay-loan-button").style.display = "inline-block";
+    // Show the "Repay Loan" button
+    document.getElementById("repay-loan-button").style.display = "inline-block";
         
-        // Show the "Your outstanding loan:" label
-        document.getElementById("outstanding-loan-row").style.display = "flex";
-    }
+    // Show the "Your outstanding loan:" label
+    document.getElementById("outstanding-loan-row").style.display = "flex";
+  }
 }
 
 function transferToBank() {
-    if (salaryBalance === 0) {
-        alert("You have no salary to transfer.");
-        return;
-    }
+  if (salaryBalance === 0) {
+    alert("You have no salary to transfer.");
+    return;
+  }
 
-    let percentOfSalary = salaryBalance * 0.10;
-    let deductedSalary = salaryBalance;
+  // Calculate 10% of the salary as the percentOfSalary
+  let percentOfSalary = salaryBalance * 0.10;
+  let deductedSalary = salaryBalance;
 
-    if (outstandingLoan > 0) {
-        deductedSalary -= percentOfSalary;
-        outstandingLoan -= percentOfSalary;
+  if (outstandingLoan > 0) {
+    deductedSalary -= percentOfSalary;
+    outstandingLoan -= percentOfSalary;
 
-        if (outstandingLoan < 1) {
-            outstandingLoan = 0;
-            document.getElementById("outstanding-loan-amount").innerHTML = "";
-            document.getElementById("outstanding-loan-row").style.display = "none";
+    if (outstandingLoan < 1) {
+      outstandingLoan = 0;
+      document.getElementById("outstanding-loan-amount").innerHTML = "";
+      document.getElementById("outstanding-loan-row").style.display = "none";
 
-            // Hide the "Repay Loan" button
-            document.getElementById("repay-loan-button").style.display = "none";
-        } else {
-            document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
-        }
+      // Hide the "Repay Loan" button when the loan is fully repaid
+      document.getElementById("repay-loan-button").style.display = "none";
     } else {
-        document.getElementById("outstanding-loan-amount").innerHTML = "";
-    }
-
-    totalBalance += deductedSalary;
-    salaryBalance = 0; 
     
-    document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(totalBalance);
-    document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(salaryBalance);
+      // Update the outstanding loan amount display with the new value
+      document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+    }
+  
+  } else {
+    document.getElementById("outstanding-loan-amount").innerHTML = "";
+  }
+  
+  totalBalance += deductedSalary;
+  salaryBalance = 0; 
+    
+  // Update the account balance display with the new totalBalance
+  document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(totalBalance);
+  document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(salaryBalance);
 }
 
 function increaseSalary() {
-    salary = 100;
-    salaryBalance += salary;
-    document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(salaryBalance);
+  salary = 100;
+  salaryBalance += salary;
+  document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(salaryBalance);
 }
 
 function repayLoan() {
-    let remaindingFunds = 0;
-    if (salaryBalance === 0) {
-        alert("You have no salary to repay loan")
-    } else if (outstandingLoan > 0) {
-        salary -= salaryBalance;
-        outstandingLoan -= salaryBalance;
+  let remaindingFunds = 0;
+  if (salaryBalance === 0) {
+    alert("You have no salary to repay loan")
+  } else if (outstandingLoan > 0) {
+    
+    // Deduct the salary balance from the outstanding loan
+    salary -= salaryBalance;
+    outstandingLoan -= salaryBalance;
 
-        document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
+    // Update the displayed outstanding loan amount
+    document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(outstandingLoan);
         
-        salaryBalance = 0;
-        document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(salaryBalance);
+    salaryBalance = 0;
+    document.getElementById("salary-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(salaryBalance);
 
-        if (outstandingLoan < 1) {
-            document.getElementById("outstanding-loan-amount").innerHTML = "";
-            document.getElementById("outstanding-loan-row").style.display = "none";
-            document.getElementById("repay-loan-button").style.display = "none";
+    if (outstandingLoan < 1) {
+      // If the outstanding loan is fully repaid, clear its display
+      document.getElementById("outstanding-loan-amount").innerHTML = "";
+      document.getElementById("outstanding-loan-row").style.display = "none";
+
+      // Hide the "Repay Loan" button
+      document.getElementById("repay-loan-button").style.display = "none";
             
-            remaindingFunds = salaryBalance - outstandingLoan;
+      remaindingFunds = salaryBalance - outstandingLoan;
 
-            totalBalance += remaindingFunds;
-            document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(totalBalance);   
-        }
+      // Add remaining funds to the total balance
+      totalBalance += remaindingFunds;
+      document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(totalBalance);   
     }
+  }
 }
 
   // Fetch the laptops.json file and parse the data
-  fetch('computers.json')
-    .then(response => response.json())
-    .then(data => {
-      laptops = data; 
-      populateLaptopTitles(); // Populate the select element
-    })
-    .catch(error => {
-      console.error("Error reading JSON file:", error);
-    });
+fetch('computers.json')
+  .then(response => response.json())
+  .then(data => {
+    laptops = data; 
+    populateLaptopTitles(); // Populate the select element
+  })
+  .catch(error => {
+    console.error("Error reading JSON file:", error);
+  });
   
-
-// Function to fetch and display laptop specs
 function displayLaptopSpecs(selectedLaptopId) {
-    // Find the selected laptop object in the JSON data
-    const selectedLaptop = laptops.find(laptop => laptop.id === selectedLaptopId);
+  // Find the selected laptop object in the JSON data
+  const selectedLaptop = laptops.find(laptop => laptop.id === selectedLaptopId);
   
-    if (selectedLaptop) {
-      // Get the specs from the selected laptop
-      const laptopSpecs = selectedLaptop.specs;
-  
-      // Display the specs in a div or any other element
-      const specsContainer = document.getElementById("specs-container");
-      specsContainer.innerHTML = "";
-      laptopSpecs.forEach(spec => {
-        const specItem = document.createElement("p");
-        specItem.textContent = spec;
-        specsContainer.appendChild(specItem);
-      });
-    }
+  if (selectedLaptop) {
+    // Get the specs from the selected laptop
+    const laptopSpecs = selectedLaptop.specs;
+    
+    // Display the specs in a div or any other element
+    const specsContainer = document.getElementById("specs-container");
+    specsContainer.innerHTML = "";
+    laptopSpecs.forEach(spec => {
+      const specItem = document.createElement("p");
+      specItem.textContent = spec;
+      specsContainer.appendChild(specItem);
+    });
   }
+}
   
-  // Function to populate the select element with laptop titles
 function populateLaptopTitles() {
   const select = document.getElementById("laptop-select");
 
@@ -142,16 +151,19 @@ function populateLaptopTitles() {
   select.addEventListener("change", function () {
     const selectedLaptopId = parseInt(select.value);
     displayLaptopSpecs(selectedLaptopId);
-    displayLaptopInfo(selectedLaptopId); // Call the function to display laptop info
+
+     // Call the function to display laptop info
+    displayLaptopInfo(selectedLaptopId);
   });
 
   // Display specs of the first laptop by default
   const firstLaptopId = laptops[0].id;
   displayLaptopSpecs(firstLaptopId);
-  displayLaptopInfo(firstLaptopId); // Display laptop info for the first laptop
+
+  // Display laptop info for the first laptop
+  displayLaptopInfo(firstLaptopId); 
 }
   
-// Function to display laptop information (image, name, description, price)
 function displayLaptopInfo(selectedLaptopId) {
   // Find the selected laptop object in the JSON data
   const selectedLaptop = laptops.find(laptop => laptop.id === selectedLaptopId);
