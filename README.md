@@ -2,7 +2,7 @@
 
 Visit page [here]( https://michalpajestka.github.io/TechShopChallenge/)
 
-![banner](resources/bannerimage.png)
+![banner](resources/banner.png)
 
 
 ## Description
