@@ -1,5 +1,7 @@
 # tech-shop-challenge
 
+Visit: https://michalpajestka.github.io/TechShopChallenge/
+
 ![banner](resources/bannerimage.png)
 
 
