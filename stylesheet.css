@@ -31,15 +31,6 @@
     margin-top: 0px;
 }
 
-.laptop-info {
-    display: flex;
-    align-items: center;
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 10px;
-
-  }
-
 .balance-row {
     display: flex;
     justify-content: space-between;
@@ -102,39 +93,54 @@ img {
     margin: 2px;
 }
   
-.laptop-image {
+.laptop-info {
+    display: flex;
+    align-items: flex-start;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .laptop-image {
     width: 200px;
     height: 200px;
-    margin-right: 20px;/
-}
-
-.laptop-details {
+    margin-right: 20px;
+  }
+  
+  .laptop-details {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.laptop-title {
+  }
+  
+  .laptop-title {
     font-size: 24px;
     font-weight: bold;
-    align-self: flex-start;
     margin-bottom: 10px;
-}
-
-.laptop-description {
+  }
+  
+  .laptop-description {
     font-size: 16px;
-}
-
-.laptop-price{
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.laptop-price-button-container {
+    margin-bottom: 10px;
+  }
+  
+  .laptop-price-button-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     height: 100%;
-}
+  }
+  
+  #laptop-price {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-right: 8px;
+  }
+  
+  .btn-buy {
+    align-self: flex-end;
+  }
+  
