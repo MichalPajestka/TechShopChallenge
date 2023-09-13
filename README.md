@@ -4,6 +4,10 @@ Visit page [here]( https://michalpajestka.github.io/TechShopChallenge/)
 
 ![banner](resources/banner.png)
 
+## Description
+
+This web page was done according to the requirments of an assignment provided during the Fullstack course at Noroff Accelerate.
+
 
 ## Description
 
