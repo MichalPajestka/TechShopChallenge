@@ -1,4 +1,4 @@
-# tech-shop-challenge
+# Tech Shop Challenge
 
 Visit page [here]( https://michalpajestka.github.io/TechShopChallenge/)
 
