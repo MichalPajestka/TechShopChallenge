@@ -10,10 +10,12 @@ document.getElementById("account-balance").innerHTML = new Intl.NumberFormat('no
 function getALoan() {
   let loan = parseFloat(prompt("Enter amount:"));
   if (outstandingLoan > 0) {
-    alert("You need to repay your previous loan first")
-  } else if (isNaN(loan) || loan <= 0 || loan > totalBalance * 2) {
+    alert("You need to repay your previous loan first.")
+  } else if (isNaN(loan) || loan <= 0) {
     alert("Invalid amount");
-  } else {
+  } else if (loan > totalBalance * 2){
+    alert("Loan can't be more than double of your balance.")
+  }else {
     // Update the outstanding loan
     outstandingLoan = loan;
     document.getElementById("outstanding-loan-amount").innerHTML = new Intl.NumberFormat('no-NO', {style: 'currency', currency: 'NOK' }).format(outstandingLoan);
